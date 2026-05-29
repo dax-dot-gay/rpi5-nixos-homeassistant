@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 {
-  packages = [pkgs.git];
+  packages = with pkgs; [ git openssh sops age ssh-to-age ];
 }

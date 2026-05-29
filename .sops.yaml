@@ -1,0 +1,10 @@
+keys:
+  - &admin_dax age1khpcjxg98tnu65xnnd6nmf95c508jn2lt4tlc8h625yfjngaaetsmp2d8s
+  - &system_hass age1zknq997207z2wdgnx9mwjnm90trgw7w9skmq8c56khrl2prldcysa63syv
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_dax
+      - *system_hass

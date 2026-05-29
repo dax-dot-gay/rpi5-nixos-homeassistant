@@ -8,6 +8,9 @@
         "devenv": {
           "expr": "(import /home/dax/Projects/Nix/rpi5-nixos-homeassistant/.devenv/bootstrap/default.nix {\n  version = \"2.1.2\";\n  is_development_version = false;\n  require_version_match = false;\n  system = \"x86_64-linux\";\n  devenv_root = \"/home/dax/Projects/Nix/rpi5-nixos-homeassistant\";\n  skip_local_src = false;\n  devenv_dotfile = \"/home/dax/Projects/Nix/rpi5-nixos-homeassistant/.devenv\";\n  devenv_dotfile_path = ./.devenv;\n  devenv_tmpdir = \"/tmp\";\n  devenv_runtime = \"/run/user/1000/devenv-c3d4ce9\";\n  devenv_istesting = false;\n  devenv_direnvrc_latest_version = 2;\n  active_profiles = [\n  ];\n  cli_options = {\n  };\n  hostname = \"daubigny\";\n  username = \"dax\";\n  git_root = \"/home/dax/Projects/Nix/rpi5-nixos-homeassistant\";\n  secretspec = null;\n  devenv_inputs = {\n    nixpkgs = {\n      url = \"github:cachix/devenv-nixpkgs/rolling\";\n    };\n  };\n  devenv_imports = [\n  ];\n  impure = false;\n  nixpkgs_config = {  };\n  lock_fingerprint = \"dcb9d930dd7aaf449b7612c8c119c9fb9dd6c82f9ba35d7a12e91057d86761b5\";\n  devenv_state = null;\n}).project.options"
         }
+      },
+      "nixos": {
+        "expr": "(builtins.getFlake \"/home/dax/Projects/Nix/rpi5-nixos-homeassistant\").nixosConfigurations.homeassistant.options"
       }
     }
   }
