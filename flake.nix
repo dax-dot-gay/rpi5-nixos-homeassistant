@@ -17,12 +17,13 @@
     ];
   };
   outputs =
-    { self, nixpkgs, nixos-raspberrypi, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     {
       nixosConfigurations = {
-        homeassistant = nixos-raspberrypi.lib.nixosSystemFull {
+        homeassistant = inputs.nixos-raspberrypi.lib.nixosSystemFull {
           specialArgs = inputs;
           modules = [
+            inputs.sops-nix.nixosModules.sops
             ./hosts/homeassistant/configuration.nix
           ];
         };

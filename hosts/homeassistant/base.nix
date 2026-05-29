@@ -8,7 +8,7 @@
     enable = true;
     allowSFTP = true;
     settings = {
-      PermitRootLogin = false;
+      PermitRootLogin = "no";
       PasswordAuthentication = false;
     };
   };
