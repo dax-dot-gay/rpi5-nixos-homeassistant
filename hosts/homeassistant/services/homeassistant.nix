@@ -20,5 +20,8 @@
             ];
         };
     };
-    networking.firewall.allowedTCPPorts = [8123];
+    networking.firewall.allowedTCPPorts = [
+        8123 # HomeAssistant main
+        8124 # Hubitat event server
+    ];
 }
