@@ -1,5 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+  ];
   security.polkit.enable = true;
   security.sudo = {
     enable = true;
