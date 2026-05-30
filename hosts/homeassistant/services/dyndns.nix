@@ -5,11 +5,7 @@
     };
     services.ddclient = {
       enable = true;
-      passwordFile = config.sops.secrets.dyndns.path;
       interval = "5min";
-      protocol = "namecheap";
-      username = "dax.gay";
-      domains = ["home.maine.dax.gay"];
-      ssl = true;
+      configFile = config.sops.secrets.dyndns.path;
     };
 }
