@@ -9,6 +9,7 @@
             SERVER_ENABLED = "no";
             CONFIG_FILEPATH = config.sops.secrets.dyndns.path;
             PERIOD = "5m";
+            LOG_LEVEL = "debug";
         };
     };
 }
