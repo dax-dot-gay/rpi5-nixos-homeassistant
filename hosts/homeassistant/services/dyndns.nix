@@ -3,13 +3,14 @@
     sops.secrets.dyndns = {
         mode = "0444";
     };
-    services.ddns-updater = {
-        enable = true;
-        environment = {
-            SERVER_ENABLED = "no";
-            CONFIG_FILEPATH = config.sops.secrets.dyndns.path;
-            PERIOD = "10s";
-            LOG_LEVEL = "debug";
-        };
+    services.ddclient = {
+      enable = true;
+      passwordFile = config.sops.secrets.dyndns.path;
+      interval = "5min";
+      protocol = "namecheap";
+      login = "token";
+      domains = ["home.maine.dax.gay"];
+      zone = "dax.gay";
+      ssl = true;
     };
 }
