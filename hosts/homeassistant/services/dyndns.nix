@@ -8,9 +8,8 @@
       passwordFile = config.sops.secrets.dyndns.path;
       interval = "5min";
       protocol = "namecheap";
-      username = "token";
+      username = "dax.gay";
       domains = ["home.maine.dax.gay"];
-      zone = "dax.gay";
       ssl = true;
     };
 }
