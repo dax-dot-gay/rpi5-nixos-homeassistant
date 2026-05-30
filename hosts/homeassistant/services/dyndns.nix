@@ -8,7 +8,7 @@
         environment = {
             SERVER_ENABLED = "no";
             CONFIG_FILEPATH = config.sops.secrets.dyndns.path;
-            PERIOD = "5m";
+            PERIOD = "10s";
             LOG_LEVEL = "debug";
         };
     };
