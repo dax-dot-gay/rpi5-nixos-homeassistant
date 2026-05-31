@@ -15,6 +15,9 @@
         virtualHosts."home.maine.dax.gay" = {
             enableACME = true;
             forceSSL = true;
+            extraConfig = ''
+              proxy_buffering off;
+            '';
             locations."/" = {
                 proxyPass = "http://0.0.0.0:8123";
                 proxyWebsockets = true;
