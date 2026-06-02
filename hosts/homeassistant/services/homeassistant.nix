@@ -17,11 +17,11 @@
             extraOptions = [
                 "--network=host"
                 "--privileged"
+                "--device=/dev/ttyAMA0:/dev/ttyAMA0"
             ];
         };
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
-        8124 # Hubitat event server
     ];
 }
