@@ -17,11 +17,15 @@
             extraOptions = [
                 "--network=host"
                 "--privileged"
-                "--device=/dev/ttyAMA0:/dev/ttyAMA0"
             ];
         };
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
     ];
-}
+    services.zwave-js = {
+        enable = true;
+        port = 3000;
+        serialPort = "/dev/ttyAMA0";
+    };
+}   
