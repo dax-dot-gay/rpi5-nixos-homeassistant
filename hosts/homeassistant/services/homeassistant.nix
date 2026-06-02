@@ -23,12 +23,11 @@
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
-        3000 # zwave
     ];
     services.zwave-js = {
         enable = true;
         port = 3000;
-        serialPort = "/dev/ttyAMA0";
+        serialPort = "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5A49038987-if00";
         secretsConfigFile = config.sops.secrets.zwave.path;
     };
 }   
