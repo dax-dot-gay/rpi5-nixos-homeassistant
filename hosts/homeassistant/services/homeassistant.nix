@@ -4,6 +4,7 @@
         "d /volumes 0777 root root - -"
         "d /volumes/homeassistant 0777 root root - -"
     ];
+    sops.secrets.zwave.mode = "0666";
     virtualisation.oci-containers = {
         backend = "podman";
         containers.homeassistant = {
@@ -27,5 +28,6 @@
         enable = true;
         port = 3000;
         serialPort = "/dev/ttyAMA0";
+        secretsConfigFile = config.sops.secrets.zwave.path;
     };
 }   
