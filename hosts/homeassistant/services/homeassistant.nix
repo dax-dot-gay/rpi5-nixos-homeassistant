@@ -23,6 +23,7 @@
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
+        3000 # zwave
     ];
     services.zwave-js = {
         enable = true;
