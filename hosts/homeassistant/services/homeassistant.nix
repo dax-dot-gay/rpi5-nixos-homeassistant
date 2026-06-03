@@ -3,6 +3,7 @@
     systemd.tmpfiles.rules = [
         "d /volumes 0777 root root - -"
         "d /volumes/homeassistant 0777 root root - -"
+        "d /volumes/esphome 0777 root root - -"
     ];
     sops.secrets.zwave.mode = "0666";
     virtualisation.oci-containers = {
@@ -20,9 +21,17 @@
                 "--privileged"
             ];
         };
+        containers.esphome = {
+            volumes = [
+                "/volumes/esphome:/config"
+            ];
+            image = "ghcr.io/esphome/esphome";
+            extraOptions = [ "--network=host" ];
+        };
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
+        6052 # ESPHome
     ];
     services.zwave-js = {
         enable = true;
