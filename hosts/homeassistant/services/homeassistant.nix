@@ -31,6 +31,7 @@
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
+        3000 # ZWave
         6052 # ESPHome
     ];
     services.zwave-js = {
