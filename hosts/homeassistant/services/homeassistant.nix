@@ -4,6 +4,7 @@
         "d /volumes 0777 root root - -"
         "d /volumes/homeassistant 0777 root root - -"
         "d /volumes/esphome 0777 root root - -"
+        "d /volumes/zwavejs 0777 root root - -"
     ];
     sops.secrets.zwave.mode = "0666";
     virtualisation.oci-containers = {
@@ -28,16 +29,35 @@
             image = "ghcr.io/esphome/esphome";
             extraOptions = [ "--network=host" ];
         };
+        containers.zwave-js = {
+            volumes = [
+                "/volumes/zwavejs:/usr/src/app/store"
+            ];
+            ports = [ "0.0.0.0:8091:8091" "0.0.0.0:3000:3000" ];
+            extraOptions = [
+                "--device=/dev/serial/by-id/usb-1a86_USB_Single_Serial_5A49038987-if00:/dev/zwave"
+            ];
+            image = "zwavejs/zwave-js-ui:latest";
+            environmentFiles = [config.sops.secrets.zwave.path];
+        };
     };
     networking.firewall.allowedTCPPorts = [
         8123 # HomeAssistant main
         3000 # ZWave
+        8091 # ZWave UI
         6052 # ESPHome
     ];
-    services.zwave-js = {
+    /*services.zwave-js = {
         enable = true;
         port = 3000;
         serialPort = "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5A49038987-if00";
         secretsConfigFile = config.sops.secrets.zwave.path;
     };
+    services.zwave-js-ui = {
+        enable = true;
+        settings = {
+            HOST = "0.0.0.0";
+            PORT = "3001";
+        };
+    };*/
 }   
